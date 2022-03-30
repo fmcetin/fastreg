@@ -1,4 +1,5 @@
 import jax
+jax.config.update('jax_platform_name', 'cpu')
 import jax.lax as lax
 from jax.scipy.special import gammaln
 import jax.numpy as np
