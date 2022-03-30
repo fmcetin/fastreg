@@ -275,7 +275,7 @@ def adam(vg_fun, loader, params0, epochs=10, eta=0.01, gamma=0.9, disp=None):
 
 # maximum likelihood using jax - this expects a mean log likelihood
 def maxlike(
-    model=None, params=None, data=None, stderr=False, optim=adam, backend='gpu',
+    model=None, params=None, data=None, stderr=False, optim=adam, backend='cpu',
     **kwargs
 ):
     # get model gradients
@@ -305,7 +305,7 @@ def maxlike(
 # a toplevel hdfe variable is treated special-like
 def maxlike_panel(
     model=None, params=None, data=None, vg_fun=None, stderr=True, optim=adam,
-    batch_size=8192, batch_stderr=8192, backend='gpu', **kwargs
+    batch_size=8192, batch_stderr=8192, backend='cpu', **kwargs
 ):
     # compute gradient for optim
     vg_fun = jax.jit(jax.value_and_grad(model), backend=backend)
